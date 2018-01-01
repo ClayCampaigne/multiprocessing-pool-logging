@@ -46,7 +46,6 @@ def task_worker_configurer(queue):
 def task_function(sleep_time, task_name, queue, configurer):
     name = multiprocessing.current_process().name
     configurer(queue)
-    name = multiprocessing.current_process().name
     start_message = 'Worker {} has started task {} and will now sleep for {}s'.format(name, task_name, sleep_time)
     logging.info(start_message)
     time.sleep(sleep_time)
