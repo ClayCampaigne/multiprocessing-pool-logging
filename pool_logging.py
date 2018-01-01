@@ -47,10 +47,10 @@ def task_function(sleep_time, task_name, queue, configurer):
     name = multiprocessing.current_process().name
     configurer(queue)
     name = multiprocessing.current_process().name
-    start_message = 'Worker {} has started task {} started and will now sleep for {}s'.format(name, task_name, sleep_time)
+    start_message = 'Worker {} has started task {} and will now sleep for {}s'.format(name, task_name, sleep_time)
     logging.info(start_message)
     time.sleep(sleep_time)
-    success_message = 'Worker {} has finished sleeping for {}s'.format(name, sleep_time)
+    success_message = 'Worker {} has finished  task {} of sleeping for {}s'.format(name, task_name, sleep_time)
     logging.info(success_message)
 
 def main():
