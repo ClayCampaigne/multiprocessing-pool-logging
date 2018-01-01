@@ -53,6 +53,7 @@ def task_function(sleep_time, task_name, queue, configurer):
     success_message = 'Worker {} has finished  task {} of sleeping for {}s'.format(name, task_name, sleep_time)
     logging.info(success_message)
 
+    
 def main():
     start_time = time.time()
     queue = multiprocessing.Manager().Queue(-1)
@@ -69,7 +70,6 @@ def main():
         name = str(i)
         pool.apply_async(task_function,
                          args=(sleep_time, name, queue, task_worker_configurer))
-
     pool.close()
     pool.join()
     queue.put_nowait(None)
