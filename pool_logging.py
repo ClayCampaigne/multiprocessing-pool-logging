@@ -61,6 +61,9 @@ def main():
                                        args=(queue, listener_configurer))
     listener.start()
     pool = multiprocessing.Pool(processes=6, maxtasksperchild=1)
+    # I need maxtasksperchild=1 to destroy / clean up each worker after its task completion.
+    # I do this because without it, each time a given worker picked up a new task, the number
+    # of duplicate messages for each logging event incremented by one.
     job_list = [np.random.randint(8,10) for i in range(6)]
     single_thread_time = np.sum(job_list)
     for i, sleep_time in enumerate(job_list):
