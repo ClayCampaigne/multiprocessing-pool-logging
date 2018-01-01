@@ -55,7 +55,6 @@ def task_function(sleep_time, task_name, queue, configurer):
 
 def main():
     start_time = time.time()
-    single_thread_time = 0.
     queue = multiprocessing.Manager().Queue(-1)
     listener = multiprocessing.Process(target=listener_process,
                                        args=(queue, listener_configurer))
